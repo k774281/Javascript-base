@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"></meta>
+  <title>Javascript基本運算</title>	
+  <script type="text/javascript">
+    /*
+    let n1= prompt("請輸入數字","1");
+    let n2= prompt("請輸入數字","1");
+    let result=n1*n2;
+    alert(result);
+    */
+
+    /*
+    let n=prompt("請輸入數字","");
+    if (n>500){
+        alert(n+">500");
+    }else{
+        alert(n+"<=500");
+    }
+    */
+   //範例    
+    //把字串轉換成數字    
+    let n1=prompt("請輸入數字","");
+    n1=Number(n1);
+    if (isNaN(n1)==true){        
+        alert("請輸入數字");        
+    }else{
+        n1=Number(n1);
+    }
+
+    let op=prompt("請輸入運算符號: +, -, *, /,", "");
+    
+    let n2=prompt("請輸入數字","");
+    n2=Number(n2);
+    if (isNaN(n2)==true){
+        alert("請輸入數字");        
+    }else{
+        n2=Number(n2);
+    }
+    let result;
+    if (op=="+"){
+        result=n1+n2;
+    }else if(op=="-"){
+        result=n1-n2;
+    }else if(op=="*"){
+        result=n1*n2;
+    }else if(op=="/"){
+        result=n1/n2;
+    }else{
+        result="此為不合理運算";      
+    } 
+      alert(result);
+  </script>
+</head>
+<body>
+</body>
+</html>
