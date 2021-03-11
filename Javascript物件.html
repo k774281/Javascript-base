@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"></meta>
+  <title>Javascript object</title>	
+  <script type="text/javascript">
+   /*let point= new Object();
+    point.x=3;
+    point.y=4;
+    point.getPosition=function(){
+       alert(this.x+","+this.y);
+    }
+    point.getPosition();
+    */
+    //範例遊戲中玩家設計
+    /*
+    let player=new Object();
+    player.name="Anna";
+    player.hp=100;
+    player.fight=function(){
+        this.hp=this.hp-2;
+    };
+    player.rest=function(){
+        this.hp++;
+    };
+    player.report=function(){
+        alert(this.name+":"+this.hp);
+    };
+
+    player.fight();
+    player.rest();
+    player.report();
+    */
+    function Player(name,hp){
+        this.name=name;
+        this.hp=hp;
+        this.fight=function(){
+            this.hp=this.hp-2;
+        };
+        this.rest=function(){
+            this.hp++;
+        };
+        this.report=function(){
+            alert(this.name+":"+this.hp);
+        }
+    }
+    let player=new Player("John",100);
+    player.report();
+    let player2=new Player("Nina",80);
+    player2.report();
+  </script>
+</head>
+<body>
+</body>
+</html>
