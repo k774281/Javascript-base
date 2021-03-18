@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"></meta>
+  <title>Javascript onclick</title>	
+  <script type="text/javascript">
+
+    document.getElementById("video").onmouseover = function() {mouseOver()};
+    document.getElementById("video").onmouseout = function() {mouseOut()};
+    
+    function mouseOver(){
+    document.getElementById("menu").style.display = "block"
+      }
+    function mouseOut() {
+    document.getElementById("menu").style.display = "none";
+}
+  </script>
+  <style type="text/css">
+    * {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.navbar {
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.items {  
+  margin: 0 24px;
+  font-size: 12px;
+  text-decoration: none;
+  letter-spacing: 2px;
+  color: #f1f3de;
+  float:left;
+}
+.sub{
+  margin-left: 15px;
+
+}
+.video:hover:after {
+  opacity: 1;  
+}
+.video:after {
+  content: '';
+  opacity: 0;
+  display: inline-block;
+  background: #f1f3de;
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: -4px;
+  left: -1px;
+  transition: all 0.3s;
+}
+.logo {
+  width: 100px;
+  height: 80px;
+  object-fit: contain;
+}
+.all {
+  width: 100%;
+  height: 650px;
+  background-image: url(https://api.elle.com.hk/var/ellehk/storage/images/celebrity/feature/avengers-endgame-review/29909637-1-chi-HK/4-11-Marvel_img_1040_780.png);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.title, .description {
+  color: #f1f3de;
+  text-align: center;
+}
+.title h2 {
+  font-size: 48px;  
+  margin-bottom: 4px;
+  margin-top: -100px
+}
+.title p, .description {
+  letter-spacing: 1px;
+}
+.description {
+  font-size: 12px;
+}
+.second-page {
+  width: 100%;
+  height: 800px;
+  background: #ececec;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wrapper-container {
+  width: 1000px;
+  height: 600px;
+  background: #222831;  
+  display: flex;
+}
+.left-container {
+  width: 50%;
+  height: 100%;
+  padding: 8px;
+}
+.right-container {
+  width: 50%;
+  height: 100%;
+  padding: 8px;
+}
+.inner-top {
+  display: flex;
+}
+.left-top-image {
+  width: 50%;
+  height: 200px;  
+  padding: 8px;
+}
+.right-top-image {
+  width: 50%;
+  height: 200px;  
+  padding: 8px;
+}
+.photo-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transition: all 0.5s;
+}
+.photo-container:hover {
+  transform: scale(0.98);
+}
+.photo {
+  width: 100%; 
+  height : 100%;
+  object-fit: cover;
+  transition: all 0.5s;
+}
+.photo:hover {
+  transform: scale(1.2);
+}
+.bottom-photo {
+  width: 100%; 
+  height : 384px;  
+  padding: 8px;
+}
+    </style>
+</head>
+<body>  
+  <section class="all">
+    <div class="navbar">
+      <div class="navbar-items";>
+        <div class="items">
+        <div class="video" onmouseover="mouseOver()" onmouseout="mouseOut()">VIDEO</div>
+        <div class="sub">
+          <ul id="menu" style=display:none;>
+            <li>123</li>
+            <li>123</li>
+            <li>123</li>
+          </ul>
+        </div>
+      </div>
+      <div class="items">
+        <div class="video" id="select()">CHARACTERS</div>
+        <div class="sub">
+          <ul id="menu" style=display:none;>
+            <li>123</li>
+            <li>123</li>
+            <li>123</li>
+          </ul>
+        </div>
+      </div>
+      <div class="items">
+        <div class="video" id="select()">MOVIES</div>
+        <div class="sub">
+          <ul id="menu" style=display:none;>
+            <li>123</li>
+            <li>123</li>
+            <li>123</li>
+          </ul>
+        </div>
+      </div>       
+      </div>
+      <img src="https://cdn.iconscout.com/icon/free/png-512/marvel-282124.png" class="logo" alt="">
+      <div class="navbar-items">
+        <div class="items">
+          <div class="video" id="select()">TV SHOWS</div>
+          <div class="sub">
+            <ul id="menu" style=display:none;>
+              <li>123</li>
+              <li>123</li>
+              <li>123</li>
+            </ul>
+          </div>
+        </div>
+        <div class="items">
+          <div class="video" id="select()">GAMES</div>
+          <div class="sub">
+            <ul id="menu" style=display:none;>
+              <li>123</li>
+              <li>123</li>
+              <li>123</li>
+            </ul>
+          </div>
+        </div>
+        <div class="items">
+          <div class="video" id="select()">NEWS</div>
+          <div class="sub">
+            <ul id="menu" style=display:none;>
+              <li>123</li>
+              <li>123</li>
+              <li>123</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="title">
+      <h2>MARVEL CHARACTERS</h2>
+      <p>Get hooked on a hearty helping of heroes <br>and villains from the humble House of Ideas!       </p>
+    </div>  
+    <div class="description">Terms and Conditions Apply</div>  
+  </section>
+  <section class="second-page">
+    <div class="wrapper-container">
+      <div class="left-container">
+        <div class="inner-top">
+          <div class="left-top-image">
+            <div class="photo-container">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRRb_q66FBwenNmOCddufCp1nYmJjqhEW2psw&usqp=CAU" class="photo" alt="">
+            </div>
+          </div>
+          <div class="right-top-image">
+            <div class="photo-container">
+            <img src="https://i1.wp.com/popbee.com/image/2018/11/marvel-cinematic-universe-official-timeline-teaser.jpg?quality=95&" class="photo" alt="">
+            </div>
+          </div>
+        </div>
+       <div class="bottom-photo">
+         <div class="photo-container">
+            <img src="https://image-cdn.hypb.st/https%3A%2F%2Fhk.hypebeast.com%2Ffiles%2F2020%2F03%2Fkevin-feige-marvel-studios-cinematic-universe-films-28-billion-breakdown-avengers-infinity-war-end-game-1.jpg?q=75&w=800&cbr=1&fit=max" class="photo" alt="">
+            </div>
+       </div>      
+      </div>
+      <div class="right-container">
+        <div class="bottom-photo">
+         <div class="photo-container">
+            <img src="https://image-cdn.hypb.st/https%3A%2F%2Fhk.hypebeast.com%2Ffiles%2F2020%2F03%2Fkevin-feige-marvel-studios-cinematic-universe-films-28-billion-breakdown-avengers-infinity-war-end-game-1.jpg?q=75&w=800&cbr=1&fit=max" class="photo" alt="">
+            </div>
+       </div>
+        <div class="inner-top">
+          <div class="left-top-image">
+            <div class="photo-container">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRRb_q66FBwenNmOCddufCp1nYmJjqhEW2psw&usqp=CAU" class="photo" alt="">
+            </div>
+          </div>
+          <div class="right-top-image">
+            <div class="photo-container">
+            <img src="https://i1.wp.com/popbee.com/image/2018/11/marvel-cinematic-universe-official-timeline-teaser.jpg?quality=95&" class="photo" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</html>
