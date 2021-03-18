@@ -5,8 +5,12 @@
   <title>Javascript onclick</title>	
   <script type="text/javascript">
 
+window.onload=function(){
     document.getElementById("video").onmouseover = function() {mouseOver()};
     document.getElementById("video").onmouseout = function() {mouseOut()};
+    window.setTimeout(mouseOver,1000);
+}
+    
     
     function mouseOver(){
     document.getElementById("menu").style.display = "block"
