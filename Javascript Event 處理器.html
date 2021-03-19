@@ -18,14 +18,22 @@
       }      
     }
   */
-    function newTitleselection(number){
+    newTitleselection=(number)=>{
+      let menu=document.getElementById("Menu")
+        if (menu.style.display=="none"){
+          menu.style.display="block";
+        }else{
+          menu.style.display="none";
+        } 
+    }
+    /*function newTitleselection(number){
       let menu=document.getElementById("Menu")
         if (menu.style.display=="none"){
           menu.style.display="block";
         }else{
           menu.style.display="none";
         }
-    }
+    }*/
     document.addEventListener("click",newTitleselection);
     </script>
     <style></style>
