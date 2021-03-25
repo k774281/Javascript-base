@@ -15,7 +15,7 @@
                 console.log(result);
             });            
         }
-    */
+    
     //Promise物件
         function delayAdd(n1, n2,delayTime){
             return new Promise(function(resolve, reject){
@@ -34,9 +34,9 @@
                 console.log(answer);                      
             });
         }
-    
+    */
     //Async/Await語法, 減化Promise 語法
-    /*    
+        
         function delayAdd(n1, n2,delayTime){
             return new Promise(function(resolve, reject){
                 window.setTimeout(()=>{
@@ -45,10 +45,12 @@
             });
         }
         async function test(){
-            let result=await delayAdd(3, 4, 2000);            
-            console.log(result);            
+            let results1=await delayAdd(3, 4, 2000);
+            let results2=await delayAdd(2, 3, 3000);
+            let answer=results1*results2;
+            console.log(answer);
         }
-    */
+    
     </script>
 </head>
 <body>
