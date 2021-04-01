@@ -4,10 +4,48 @@
     <meta charset="utf-8"></meta>
     <title>skill tree</title>
 <script type="text/javascript">
+    app.init=function(){
+        //初始化狀態
+        let Skill=app.lib.Skill;
+        app.state.skills={
+            // step 0
+            "s_0_0":new Skill(0, 0, "Skill-0-0", []),
+            "s_0_1":new Skill(0, 1, "Skill-0-1", []),
+            // step 1
+            "s_1-0":new Skill(1, 0, "Skill-1-0", ["s_0_0"]),
+            // step 2
+            "s_2_0":new Skill(2, 0, "Skill-2-0", ["s_1_0"]),
+            "s_2_1":new Skill(2, 1, "Skill-2-1", ["s_0_1"], ["s_1_0"]),
+            // step 3
+            "s_3_0":new Skill(3, 0, "Skill-3-0", ["s_2_1"]),
+            "s_3_1":new Skill(3, 1, "Skill-3-1", ["s-2-0"], ["s-2-1"]),
+            "s_3_2":new Skill(3, 2, "Skill-3-2", ["s_2_1"]),
+        };
+        for(let key in app.state.skills){
+            app.state.skills[key].preSkills=app.state.skills[key].preSkills.map(function(item, index){
+                return app.state.skills[key];
+            });
+        }
+        //產生介面
+        app.render();
+    };
+    app.render=function(){
 
+    };
+    window.addEventListener("load", app.init);
+    //類別庫
+    app.lib.Skill=class{
+        constructor(step, count, name, preSkills){
+            this.step=step; //整棵樹中的主階段
+            this.count=count; //每個階段的技能編號
+            this.name=name; //技能名稱
+            this.preSkills=preSkills; //前置技能列表
+            this.level=0; //技能等級, 預設從0開始
+        }
+    }   
 </script>
 </head>
-<body>
+<body style="text-align: center;">
     <svg id="ground" width="1000px" height="800px" ></svg>
 </body>
 </html>
