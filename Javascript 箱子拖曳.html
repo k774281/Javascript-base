@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"></meta>
+    <title>javascript code</title>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style type="text/css">
+        .box{
+            width: 300px; height: 500px; border:1px solid #000000; display:inline-block;vertical-align: top;            
+        }
+        .box>.items{
+            width: 50px; height: 50px; background-color: brown; display: inline-block; margin-left: 5px;            
+        }
+    </style>
+    <script type="text/javascript">
+        window.addEventListener("load", ()=>{
+            let item=document.body.getElementsByClassName("items");
+            for(let i=0; i<item.length; i++){
+                item[i].addEventListener("mousedown", drag);
+            }
+        });
+        //滑鼠按下的時候
+        function drag(e){     
+            let currentBox=this.parentNode; //parentNode 返回指定節點的父節點
+            let targetBox; //目標區塊
+            if(currentItem.id=="left-box"){
+                targetBox=document.getElementById("right-box")
+            }else{
+                targetBox=document.getElementById("left-box");
+            }
+            let currentItem=this;
+            currentItem.style.position="absolute";    
+            //滑鼠移動的時候        
+            let move=function(e){
+                e.preventDefault(e);
+                currentItem.style.left=e.clientX+"px";
+                currentItem.style.top=e.clientY+"px";
+            };
+            //滑鼠放下的時候, 移除事件處理
+            let end=function(e){
+
+            };
+            document.addEventListener("mousemove", move);
+            document.addEventListener("mouseend", end);
+        }
+    </script>
+</head>
+<body>
+    <div class="box" id="left-box">
+        <div class="items" >1</div>
+        <div class="items" >2</div>
+        <div class="items" >3</div>
+        <div class="items" >4</div>
+    </div>
+    <div class="box" id="right-box"></div>
+</body>
+</html>
