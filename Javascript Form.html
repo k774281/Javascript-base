@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"></meta>
+    <title>JavaScript Form</title>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style type="text/css">
+    .container{  
+        position:absolute;
+        left: 50%;
+        transform: translate(-50%);
+    }
+    h3{
+        font-size: 24px;
+        color:rgb(58, 56, 56);
+    }
+    p{
+        color:rgb(170, 169, 166)
+    }
+    button{
+        display: block;
+        margin-top: 20px;
+    }
+    input{
+        padding: 5px;
+        width: 300px;
+    }
+    .ok{
+        color:rgb(182, 19, 19);
+        z-index: 999;
+    }
+    form input:valid+.ok{
+        display: inline;
+    }
+    form input:invalid+.ok{
+        display: none;
+    }
+    </style>
+    <script type="text/javascript">
+
+    </script>
+</head>
+<body>
+    <form onsubmit="alert('finished');"> <!-- 此行 alert 是為驗證是否成功, 實際開發不會用到 -->
+        <div class="container">          
+            <h3>Email address</h3>            
+            <input type="email" required /> 
+            <span class="ok" >V</span>
+            <p>We'll never share your email with anyone else.</p>
+            <h3>Password</h3>
+            <!-- required 欄位設定必填, placeholder 給個提示, pattern 正規表示式 [英+數] 並且 {6-8之間}-->
+            <input type="password" required pattern="[0-9a-zA-Z]{8,16}" />
+            <span class="ok" >V</span>
+            <button type="submit" >Submit</button>              
+        </div>        
+    </form>  
+</body>
+</html>
