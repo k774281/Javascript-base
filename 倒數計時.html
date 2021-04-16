@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"></meta>
+    <title>JavaScript Form</title>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    
+    <style type="text/css">
+        @charset "UTF-8";
+        * {
+        font-family: "微軟正黑體";
+        position: relative;
+        }
+
+        .finishloading h1, .finishloading p {
+        padding: 20px;
+        opacity: 1;
+        top: 0px;
+        }
+        .finishloading .mask {
+        top: 100vh;
+        }
+        .finishloading .loadingtext {
+        opacity: 0;
+        padding-top: 20px;
+        }
+        .finishloading .loading_dots {
+        opacity: 0;
+        }
+
+        html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        background-color: #eee;
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+
+        .page {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0px;
+        top: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+
+        .mask {
+        background-color: #f24;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        transition: 1s 0.3s;
+        top: 0px;
+        left: 0px;
+        }
+
+        h1, p {
+        padding: 20px;
+        opacity: 0;
+        top: 20px;
+        transition: 0.5s 1s;
+        }
+
+        p {
+        transition-delay: 1.3s;
+        line-height: 30px;
+        }
+
+        .loadingtext {
+        position: absolute;
+        left: 50%;
+        top: calc(50% + 40px);
+        transform: translateX(-50%) translateY(-50%);
+        color: white;
+        letter-spacing: 2px;
+        font-size: 12px;
+        transition: 0.5s;
+        padding-left: 25px;
+        }
+
+        .loading_dots {
+        position: absolute;
+        left: calc(50% - 25px);
+        top: calc(50% - 50px);
+        transform: translateX(-50%) translateY(-50%);
+        transition: 0.5s;
+        }
+        .loading_dots:before, .loading_dots:after {
+        content: "";
+        display: block;
+        border-radius: 100%;
+        width: 16px;
+        height: 16px;
+        z-index: 100;
+        position: absolute;
+        top: 50px;
+        background-color: #fff;
+        transition: 0.5s;
+        }
+        .loading_dots:before {
+        -webkit-animation: moving 2s infinite;
+                animation: moving 2s infinite;
+        -webkit-animation-delay: 0s;
+                animation-delay: 0s;
+        }
+        .loading_dots:after {
+        -webkit-animation: moving 2s infinite;
+                animation: moving 2s infinite;
+        -webkit-animation-delay: -1s;
+                animation-delay: -1s;
+        }
+
+        @-webkit-keyframes moving {
+        0% {
+            left: 0px;
+            transform: scale(0.8);
+            opacity: 0.8;
+        }
+        25% {
+            transform: scale(1);
+            opacity: 1;
+        }
+        50% {
+            left: 50px;
+            transform: scale(0.8);
+            opacity: 0.8;
+        }
+        75% {
+            transform: scale(0.6);
+            opacity: 0.6;
+        }
+        100% {
+            left: 0px;
+            transform: scale(0.8);
+            opacity: 0.8;
+        }
+        }
+
+        @keyframes moving {
+        0% {
+            left: 0px;
+            transform: scale(0.8);
+            opacity: 0.8;
+        }
+        25% {
+            transform: scale(1);
+            opacity: 1;
+        }
+        50% {
+            left: 50px;
+            transform: scale(0.8);
+            opacity: 0.8;
+        }
+        75% {
+            transform: scale(0.6);
+            opacity: 0.6;
+        }
+        100% {
+            left: 0px;
+            transform: scale(0.8);
+            opacity: 0.8;
+        }
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        //原理:
+        //前端進階程式js - jquery 動態改變css外觀/ html內容
+        //前端進階程式js - jquery 初階滑鼠事件 - click/hover
+        //時間相關的觸發，當載入完成後，把page套上finishloadingclass
+        //把結束後要改變的css都寫在一起(紅色遮罩下降)
+        //用時間觸發class改變
+
+        var percent=0;
+        //顯示趴數(跟js中計數器打電話那個一樣)
+        setInterval(function(){
+        $(".loadingtext").text(" "+percent+"%");
+        percent++;
+        },20);
+        //兩秒後加上完成的Class
+        setTimeout(function(){
+        $(".page").addClass("finishloading");
+        },2000);
+
+        //觸發重新載入
+        $("h1").click(function(){
+        //重置%數、去掉完成的class、設定兩秒後加上class
+        percent=0;
+        $(".page").removeClass("finishloading")
+        setTimeout(function(){
+            $(".page").addClass("finishloading");
+        },2000);
+        });
+
+    </script>
+</head>
+<body>
+
+    <div class="page loading">
+        <div class="mask"></div>
+        <div class="loading_dots"> </div>
+        <div class="loadingtext"></div>
+        <h1>標題文字</h1>
+        <p>動畫互動網頁程式入門課程，<br>為了教學跟討論方便，這邊開了一個臉書社團，<br>想要反應課程問題、討論、分享，都可以來這邊，<br>我也會定期上去解答疑問一起討論!<br><br>請至頂貼文麻煩大家把自己的codepen profile連結貼上來囉<br>可以彼此觀摩作品一起進步</p>
+      </div>
+
+</body>
+</html>
