@@ -2,10 +2,29 @@
 <html>
 <head>
   <meta charset="utf-8"></meta>
-  <title>Javascript setTimeout</title>	
+  <title>Javascript setTimeout</title>
+
+  <style>
+      *{
+          margin: 0;
+          padding: 0;
+      }
+      html, body{
+          width: 100%;
+          height: 100%;
+      }
+      .wrapper{
+          width: 100%;
+          height: 100%;
+          background-color: rgb(65, 63, 63);
+      }
+      .btn{
+          
+      }
+  </style>
   <script type="text/javascript">
-/*
-let timer;
+
+/*let timer;
 window.onload=function(){
     timer=document.getElementById("timer");
     window.setTimeout(countdown, 1000);
@@ -19,23 +38,12 @@ function countdown(){
     }
 }
 */
-
-let timer;
-window.onload=function(){
-    timer=document.getElementById("timer");
-    window.setTimeout(countdown, 20);
-}
-function countdown(){
-    timer.innerHTML=timer.innerHTML-1;
-    if(timer.innerHTML>0){
-        window.setTimeout(countdown, 20);
-    }else{
-        document.location="https://github.com/k774281/Javascript-base";
-    }
-}
   </script>
 </head>
 <body>
-    <div id="timer">100</div>
+    <div class="wrapper">
+        <a href="#" class="btn">
+        <span id="timer">100</span>
+    </div>
 </body>
 </html>
