@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8"></meta>
-    <title>homepage</title>
+    <title>test</title>
     <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
     <style type="text/css">
@@ -10,7 +10,7 @@
             margin: 0;
             padding: 0;
             font-family: 微軟正黑體;
-            font-weight: 100;
+            font-weight: 100;          
         }
         .finishloading .mask{
             top: 100vh;
@@ -202,13 +202,6 @@
             }
         }
         
-    $("a.move").click(function(){
-        event.preventDefault();
-        let to = $(this).attr("href"); //用變數存取被點擊的連結,其attr的值        
-        $("body, html").animate({  //整個網頁都要做移動, 需用body, html
-            scrollTop: $(to).position().top
-        },1000);
-    })
     </script>
 </head>
 <body>

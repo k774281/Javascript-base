@@ -1,35 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8"></meta>
-    <title>homepage</title>
-    <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+  <meta charset="utf-8"></meta>
+  <title>PageMask</title>	
+  <script type="text/javascript"></script>
     <style type="text/css">
         *{
             margin: 0;
             padding: 0;
-            font-family: 微軟正黑體;
-            font-weight: 100;
+            font-family: 微軟正黑體;          
         }
         .finishloading .mask{
             top: 100vh;
         }
-        .finishloading .information h1, .finishloading .profile, .finishloading .information h2, .finishloading .context{
-            opacity: 1;
-            padding-top: 0px;
-        }
-        .finishloading .circle1{
+        .finishloading .circle{
             opacity: 0;
         }
         html ,body{
             width: 100%;
-            height: 100%;
+            height: 2400px;
             background-color: #f4eee8;            
         }
         .page{
             width: 100%;
-            height: 100%;
+            height: 2400px;
         }
         .timer{
             position:absolute;
@@ -47,71 +41,15 @@
             height: 100%;
             background-color:#325288;
             transition: 1s 0.3s;
-        }
-        .first-page{
-            width: 100%;
-            height: 800px;
-        }
-        .information-container{
-            width: 560px;
-            height: 400px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;            
-        }
-        .information{
-            width: 50%;
-            height: 100%;                        
-        }
-        .information h1{
-            color:#114e60;
-            opacity: 0;            
-            transition: 0.5s 1s;            
-            padding-top: 20px;
-            font-size: 48px;          
         }        
-        .information h2{
-            color:#114e60;
-            font-size: 36px;
-            transition: 1s 1s;
-            opacity: 0;
-            padding-top: 20px;
-        }
-        .profile{
-            color:#114e60;
-            font-size: 18px;
-            transition: 1s 1s;
-            opacity: 0;
-            padding-top: 20px;
-        }
-        .context{
-            color:#114e60;
-            font-size: 16px;
-            transition: 1s 1s;
-            opacity: 0;
-            padding-top: 20px;
-            margin-top: 5px;
-        }
-        .second-page{
-            background-color: royalblue;
-            width:1200px;
-            height: 800px;
-        }
-        .three-page{
-            background-color: #ba87af;
-            width:1200px;
-            height: 800px;
-        }
-        .circle1{
+        .circle{
             position: absolute;
             left: calc(50% - 30px);
             top: 50%;
             transform: translate(-50%, -50%);
             transition: 0.5s; 
         }
-        .circle1:before, .circle1:after{
+        .circle:before, .circle:after{
             content: "";
             display: block;
             border-radius: 100%;
@@ -124,10 +62,10 @@
             transition: 0.5s;
             animation: move 2s infinite linear;
         }
-        .circle1:before{
+        .circle:before{
             animation-delay: 0s;
         }
-        .circle1:after{
+        .circle:after{
             animation-delay: -1s;
         }
         @keyframes move{
@@ -181,11 +119,21 @@
             }
         }
     </style>
+
+</head>
+<body>
+    <div class="page loading ">
+        <div class="mask"></div>
+        <div class="circle"></div>
+        <div class="timer" id="timer">100</div>        
+    </div>
+    
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script type="text/javascript">
 
-
-        let timer;
+    let timer;
         window.onload=function(){
             timer=document.getElementById("timer");
             window.setTimeout(countdown, 20);
@@ -200,8 +148,8 @@
                 });
                 $("#timer").fadeOut();
             }
-        }
-        
+        };
+
     $("a.move").click(function(){
         event.preventDefault();
         let to = $(this).attr("href"); //用變數存取被點擊的連結,其attr的值        
@@ -210,32 +158,6 @@
         },1000);
     })
     </script>
-</head>
-<body>
-    <div class="page loading ">
-        <div class="mask"></div>
-        <div class="circle1"></div>
-        <div class="timer" id="timer">100</div>
-        <div class="menu">
-            <a href="#first-position">關於我</a>
-            <a href="#second-position">position2</a>
-            <a href="#three-position">position3</a>
-        </div>
-        <div class="first-page" id="first-position">
-            <div class="information-container">
-                <div class="information">
-                    <h1>Yen-Ju Pan</h1>
-                    <p class="profile">profile</p>
-                </div>
-                <div class="information">
-                    <h2>基本資料</h2>                    
-                    <p class="context">姓名:潘彥如</br>系別:視覺傳達設計學系</br>興趣:視覺設計、英語學習、運動健身
-                    </br>技能:Photoshop、Javascript、Bootstrap、React</p>
-                </div>
-            </div>
-        </div>
-        <div class="second-page" id="second-position"></div>
-        <div class="three-page" id="three-position"></div>
-    </div>
+
 </body>
 </html>
