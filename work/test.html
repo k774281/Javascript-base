@@ -11,46 +11,48 @@
             padding: 0;
             font-family: 微軟正黑體;
             font-weight: 100;          
-        }
-        .finishloading .mask{
-            top: 100vh;
-        }
-        .finishloading .information h1, .finishloading .profile, .finishloading .information h2, .finishloading .context{
-            opacity: 1;
-            padding-top: 0px;
-        }
-        .finishloading .circle1{
-            opacity: 0;
-        }
+        }        
         html ,body{
             width: 100%;
-            height: 100%;
-            background-color: #f4eee8;            
+            height: 100%;                        
         }
         .page{
             width: 100%;
             height: 100%;
         }
-        .timer{
-            position:absolute;
-            top: 450px;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color:#f8ede3;
-            font-size: 18px;
+        .finishloading .information h1, .finishloading .information .profile, .finishloading .information h2,.finishloading .information .context{
+            opacity: 1;
+            padding-top: 0px;
         }
-        .mask{
-            position: absolute;
-            top: 0px;
-            left: 0px;
+        .menu{
             width: 100%;
-            height: 100%;
-            background-color:#325288;
-            transition: 1s 0.3s;
+            height: 40px;
+            position: fixed;
+            border-bottom: 1px solid #feffde;
+            background: transparent;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;            
+        }
+        .menuMove{                     
+            transition: all 0.5s;
+            background-color: #feffde;
+            z-index: 999;        
+            }        
+        .move{
+            color: #a2b29f;
+            text-decoration: none;
+            margin: 0 12px;
+            letter-spacing: 2px;
+            font-size: 12px;
+        }
+        .move:hover{
+            color:#687980;
         }
         .first-page{
             width: 100%;
             height: 800px;
+            background-color: #2f5d62;
         }
         .information-container{
             width: 560px;
@@ -66,153 +68,52 @@
             height: 100%;                        
         }
         .information h1{
-            color:#114e60;
-            opacity: 0;            
-            transition: 0.5s 1s;            
+            color:#feffde;
+            transition: 0.5s 1s;
             padding-top: 20px;
-            font-size: 48px;          
-        }        
-        .information h2{
-            color:#114e60;
-            font-size: 36px;
-            transition: 1s 1s;
+            font-size: 48px;
             opacity: 0;
+        }   
+        .information h2{
+            color:#feffde;
+            font-size: 36px;
+            transition: 1s 1s;            
             padding-top: 20px;
+            opacity: 0;
         }
         .profile{
-            color:#114e60;
+            color:#feffde;
             font-size: 18px;
-            transition: 1s 1s;
-            opacity: 0;
+            transition: 1s 1s;            
             padding-top: 20px;
+            opacity: 0;
         }
         .context{
-            color:#114e60;
+            color:#feffde;
             font-size: 16px;
-            transition: 1s 1s;
-            opacity: 0;
+            transition: 1s 1s;            
             padding-top: 20px;
             margin-top: 5px;
+            opacity: 0;
         }
         .second-page{
-            background-color: royalblue;
-            width:1200px;
+            background-color: #184d47;
+            width:100%;
             height: 800px;
         }
         .three-page{
-            background-color: #ba87af;
-            width:1200px;
+            background-color: #2f5d62;
+            width:100%;
             height: 800px;
         }
-        .circle1{
-            position: absolute;
-            left: calc(50% - 30px);
-            top: 50%;
-            transform: translate(-50%, -50%);
-            transition: 0.5s; 
-        }
-        .circle1:before, .circle1:after{
-            content: "";
-            display: block;
-            border-radius: 100%;
-            width: 16px;
-            height: 16px;
-            z-index: 100;
-            position: absolute;            
-            top: 50%;            
-            background-color: rgb(233, 227, 227);            
-            transition: 0.5s;
-            animation: move 2s infinite linear;
-        }
-        .circle1:before{
-            animation-delay: 0s;
-        }
-        .circle1:after{
-            animation-delay: -1s;
-        }
-        @keyframes move{
-            0%{
-                left:  0px;
-                transform: scale(0.8);
-                opacity: 0.8;      
-            }
-            25%{
-                transform: scale(1); 
-                opacity: 1;
-            }
-            50%{ 
-                left: 50px;
-                transform: scale(1.5);   
-                opacity: 0.8;             
-            }
-            75%{
-                transform: scale(0.6);
-                opacity: 0.6;
-            }
-            100%{ 
-                left: 0px;               
-                transform: scale(0.8); 
-                opacity: 0.8;                
-            }
-        }
-        @-webkit-keyframes move{
-            0%{
-                left:  0px;
-                transform: scale(0.8);
-                opacity: 0.8;      
-            }
-            25%{
-                transform: scale(1); 
-                opacity: 1;
-            }
-            50%{ 
-                left: 50px;
-                transform: scale(1.5);   
-                opacity: 0.8;             
-            }
-            75%{
-                transform: scale(0.6);
-                opacity: 0.6;
-            }
-            100%{ 
-                left: 0px;               
-                transform: scale(0.8); 
-                opacity: 0.8;                
-            }
-        }
     </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script type="text/javascript">
-
-
-        let timer;
-        window.onload=function(){
-            timer=document.getElementById("timer");
-            window.setTimeout(countdown, 20);
-        }
-        function countdown(){
-            timer.innerHTML=timer.innerHTML-1;
-            if(timer.innerHTML>0){
-                window.setTimeout(countdown, 20);                
-            }else{
-                $(document).ready(function(){
-                $(".page").addClass("finishloading");
-                });
-                $("#timer").fadeOut();
-            }
-        }
-        
-    </script>
 </head>
 <body>
-    <div class="page loading ">
-        <div class="mask"></div>
-        <div class="circle1"></div>
-        <div class="timer" id="timer">100</div>
+    <div class="page">
         <div class="menu">
-            <a href="#first-position">關於我</a>
-            <a href="#second-position">position2</a>
-            <a href="#three-position">position3</a>
+            <a href="#first-position" class="move">ABOUT ME</a>
+            <a href="#second-position" class="move">WORK</a>
+            <a href="#three-position" class="move">CONTACT</a>
         </div>
         <div class="first-page" id="first-position">
             <div class="information-container">
@@ -230,5 +131,31 @@
         <div class="second-page" id="second-position"></div>
         <div class="three-page" id="three-position"></div>
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        $(window).on("load", function(){
+            $(".page").addClass("finishloading");
+        });
+        
+        $("a.move").click(function(){
+            event.preventDefault();
+            let to = $(this).attr("href"); //用變數存取被點擊的連結,其attr的值        
+            $("body, html").animate({  //整個網頁都要做移動, 需用body, html
+                scrollTop: $(to).position().top
+            },1000);
+        })
+
+        //滑鼠滾輪移動, navbar變色
+        $(window).scroll(function(e){
+            if($(window).scrollTop()>=80)
+            $(".menu").addClass("menuMove");
+            else
+            $(".menu").removeClass("menuMove");
+        })
+
+    </script>
+
 </body>
 </html>
