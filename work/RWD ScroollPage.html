@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>RWD 漢堡選單</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #menu-control{
+            position: absolute;
+        }
+        .header{
+            height: 50px;
+            background-color: #2b4f60;
+            position: relative;            
+        }
+        .logo{
+            width: 60px;
+            height: 40px;
+            margin-left: 10px;            
+        }
+        .logo a{
+            display: block;
+            height: 40px;
+        }
+        .logo img{
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            margin-top: 5px;
+        }
+        .menu-btn{
+            width: 35px;
+            height: 35px;
+            background-color: #2b4f60;
+            display: block;
+            position: absolute;
+            top: 5px;
+            right: 15px;
+            border-radius: 4px;
+            border: 2px solid #bdc7c9;            
+        }
+        span{
+            opacity: 0;
+        }
+        .menu-btn::before{
+            content: "";
+            position: absolute;
+            left:2px;
+            width: 32px;
+            height: 2px;
+            background-color: #bdc7c9;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            box-shadow: 0px 8px 0px #bdc7c9,
+                        0px -8px 0px #bdc7c9;
+        }
+        nav{
+            width: 80%;
+            height: calc( 100vh - 50px);
+            background-color: #2b4f60;
+            position: absolute;
+            top: 50px;
+            left: -100%;
+            transition: all 0.5s;
+        }
+        nav a{
+            position:relative;
+            display: block;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #bdc7c9;
+            border-bottom: 1px solid #bdc7c9;
+        }
+        #menu-control:checked ~ .header nav{
+            left: 0;
+        }
+        @media screen and (min-width: 768px){
+            .menu-btn{ display: none; }
+            .header{
+                display: flex;
+                justify-content: space-between;
+                background-color: #ff79cd;
+                align-items: center;
+            }
+            nav{               
+                position: relative;
+                left: 0;
+                display: flex;
+                width: auto;
+                height: auto;
+                top: 0;
+            }
+            nav a{
+                border-bottom: 0px;
+                color:#ffdf6b;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <input type="checkbox" name="" id="menu-control">
+
+    <div class="header">
+        <h1 class="logo">
+            <a href="#"><img src="https://image.flaticon.com/icons/png/512/1483/1483341.png">
+            </a>
+        </h1>
+        <label for="menu-control" class="menu-btn">
+            <span>選單</span>
+        </label>
+        <nav>
+            <a href="#">About Me</a>
+            <a href="#">Work</a>
+            <a href="#">Contact</a>            
+        </nav>
+    </div>
+
+</body>
+</html>

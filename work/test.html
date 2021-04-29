@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>test</title>
     <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
@@ -116,6 +117,7 @@
             <a href="#three-position" class="move">CONTACT</a>
         </div>
         <div class="first-page" id="first-position">
+            <img src="" alt="">
             <div class="information-container">
                 <div class="information">
                     <h1>Yen-Ju Pan</h1>
@@ -138,7 +140,7 @@
         $(window).on("load", function(){
             $(".page").addClass("finishloading");
         });
-        
+
         $("a.move").click(function(){
             event.preventDefault();
             let to = $(this).attr("href"); //用變數存取被點擊的連結,其attr的值        
