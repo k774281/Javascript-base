@@ -3,20 +3,30 @@
 <head>
     <meta charset="utf-8"></meta>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>RWD 漢堡選單</title>
+    <title>RWD Homepage</title>
     <style type="text/css">
         *{
             margin: 0;
             padding: 0;
             list-style: none;
+            font-family: 微軟正黑體;
         }
         #menu-control{
             position: absolute;
         }
+        .finishloading .information-container{
+            opacity: 1;
+            padding-top: 0px;
+        }
         .header{
             height: 50px;
-            background-color: #2b4f60;
-            position: relative;            
+            background-color: #2b4f60;            
+            position: absolute;
+            top: 0;
+            left:0;
+            right:0;
+            z-index: 999;
+            width: 100%;              
         }
         .logo{
             width: 60px;
@@ -64,12 +74,13 @@
         }
         nav{
             width: 80%;
-            height: calc( 100vh - 50px);
-            background-color: #2b4f60;
+            height: calc( 100vh - 50px);            
             position: absolute;
             top: 50px;
             left: -100%;
-            transition: all 0.5s;
+            transition: 0.5s;
+            background-color: #2b4f60;
+            z-index: -1;
         }
         nav a{
             position:relative;
@@ -78,17 +89,62 @@
             text-decoration: none;
             color: #bdc7c9;
             border-bottom: 1px solid #bdc7c9;
+            transition: all 0.5s;
+        }
+        nav a:hover{
+            color:#45526c;
         }
         #menu-control:checked ~ .header nav{
-            left: 0;
+            left:0;
+        }
+        .first-page{
+            width: 100%;
+            height: 800px;
+            background-color: #845460;
+            text-align: center;
+        }
+        .first-page img{
+            width:100%;
+            height: 500px;
+            max-width: 1400px;
+        }
+        .information-container{           
+            margin-top: 50px;
+            padding-top: 20px;
+            color:#bdc7c9;
+            transition: 0.5s 1s;
+            opacity: 0;
+        }
+        .information h1{
+            margin-right: 20px;
+        }
+        .information p{
+            padding: 0 15px;
+        }
+        .second-page{
+            width: 100%;
+            height: 800px;
+            background-color: #ead3cb;
+        }
+        .third-page{
+            width: 100%;
+            height: 800px;
+            background-color: #845460;
         }
         @media screen and (min-width: 768px){
             .menu-btn{ display: none; }
             .header{
                 display: flex;
                 justify-content: space-between;
-                background-color: #ff79cd;
+                background-color: #2b4f60;
                 align-items: center;
+                position: fixed;
+                transition: all 0.5s;
+            }
+            .headerMove{
+            transition: all 0.5s;
+            background-color: white;
+            z-index: 999; 
             }
             nav{               
                 position: relative;
@@ -97,18 +153,24 @@
                 width: auto;
                 height: auto;
                 top: 0;
+                background-color: transparent;                          
             }
             nav a{
                 border-bottom: 0px;
-                color:#ffdf6b;
+                color:#bdc7c9;
+            }
+            .logo img{
+                margin-top: 0px;
             }
         }
     </style>
 
 </head>
 <body>
-    <input type="checkbox" name="" id="menu-control">
-    <div class="page">
+    
+    <div class="page">        
+        <input type="checkbox" name="" id="menu-control">
+    
         <div class="header">
             <h1 class="logo">
                 <a href="#"><img src="https://image.flaticon.com/icons/png/512/1483/1483341.png">
@@ -118,15 +180,60 @@
                 <span>選單</span>
             </label>
             <nav>
-                <a href="#">About Me</a>
-                <a href="#">Work</a>
-                <a href="#">Contact</a>            
-            </nav>
+                <a href="#first_position" class="move">About Me</a>
+                <a href="#second_position" class="move">Work</a>
+                <a href="#third_position" class="move">Contact</a>
+            </nav>            
         </div>
-        <div class="first-page"></div>
-        <div class="second-page"></div>
-        <div class="third-page"></div>
+        <div class="first-page" id="first_position">
+            <img src="https://picsum.photos/1400/500?random=2" alt="">
+            <div class="information-container">
+                <div class="information">
+                    <h1>Yen-Ju Pan</h1>
+                    <p class="profile">profile</p>
+                </div>
+                <div class="information">
+                    <h2>基本資料</h2>                    
+                    <p class="context">姓名:潘彥如</br>系別:視覺傳達設計學系</br>興趣:視覺設計、英語學習、運動健身
+                    </br>技能:Photoshop、Javascript、Bootstrap、React</p>
+                </div>
+            </div>
+        </div>
+        <div class="second-page" id="second_position"></div>
+        <div class="third-page" id="third_position"></div>
     </div>
+    
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        $("a.move").click(function(){
+            event.preventDefault();
+            let to =$(this).attr("href");
+            $("body, html").animate({
+                scrollTop: $(to).position().top
+            },600);
+        })
+
+
+        $(window).scroll(function(e){
+            if($(window).scrollTop()>=80)
+                $(".header").addClass("headerMove");
+            else
+                $(".header").removeClass("headerMove");                
+        });
+
+        $(function(){
+            if($(window).width()<768){
+                $('nav a').on('click', function(){
+                    $('.menu-btn').click();
+                });
+            }
+        });
+
+        $(window).on("load", function(){
+            $(".page").addClass("finishloading");
+        });
+    </script>
 </body>
 </html>
