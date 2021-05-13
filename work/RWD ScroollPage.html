@@ -6,7 +6,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
     <title>RWD Homepage</title>
     <style type="text/css">
-        *{
+        *{            
             width: 100%;
             margin: 0;
             padding: 0;
@@ -16,9 +16,28 @@
         #menu-control{
             position: absolute;
         }
+        .finishloading .mask{
+            opacity: 0;
+            top: 100vh;
+        }
         .finishloading .information-container{            
             opacity: 1;
             padding-top: 0px;
+        }
+        .finishloading .header{
+            opacity: 1;
+        }
+        .finishloading .circle1{
+            opacity: 0;
+        }
+        .mask{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100vh;
+            background-color:#325288;
+            transition: 1s 0.3s;
         }
         .header{            
             width: 100%;
@@ -28,7 +47,8 @@
             top: 0;
             left:0;
             right:0;
-            z-index: 999;                          
+            z-index: 999;
+            opacity: 0;                         
         }
         .logo{
             width: 60px;
@@ -85,7 +105,9 @@
             z-index: -1;
         }
         nav a{
-            position:relative;
+            position: relative;
+            top: 0px;
+            left: 0px;
             display: block;
             padding: 10px 20px;
             text-decoration: none;
@@ -98,28 +120,126 @@
         }
         #menu-control:checked ~ .header nav{
             left:0;
-        }
+        }        
         .page{
             max-width: 1440px;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0px;
+            top: 0px;        
+        }
+        .mask_timer{
+            width:100%;
+            height: 600px;
+            position: relative;
+            left: 0px;
+            top: 0px;
+            margin: 0 auto;
+            background-color: #564a4a;            
+        }
+        .mask_timer img{ 
+            display: block;           
+            width:100%;
+            height: 600px;
+            max-width: 1440px;
+            object-fit: cover;                     
+        }
+        .timer{
+            position: absolute; 
+            top: calc( 50% + 30px );
+            left: calc( 50% - 10px );
+            transform: translateY(-50%);
+            color:#f8ede3;
+            font-size: 18px;
+        }
+        .circle1{
+            position: absolute;
+            top: 50%;
+            left: calc( 50% - 30px );
+            transform: translateY(-50%);
+            transition: 0.5s; 
+        }
+        .circle1:before, .circle1:after{
+            content: "";
+            display: block;
+            border-radius: 100%;
+            width: 16px;
+            height: 16px;
+            z-index: 100;
+            position: absolute;            
+            top: 50%;            
+            background-color: rgb(233, 227, 227);            
+            transition: 0.5s;
+            animation: move 2s infinite linear;
+        }
+        .circle1:before{
+            animation-delay: 0s;
+        }
+        .circle1:after{
+            animation-delay: -1s;
+        }
+        @keyframes move{
+            0%{
+                left:  0px;
+                transform: scale(0.8);
+                opacity: 0.8;      
+            }
+            25%{
+                transform: scale(1); 
+                opacity: 1;
+            }
+            50%{ 
+                left: 50px;
+                transform: scale(1.5);   
+                opacity: 0.8;             
+            }
+            75%{
+                transform: scale(0.6);
+                opacity: 0.6;
+            }
+            100%{ 
+                left: 0px;               
+                transform: scale(0.8); 
+                opacity: 0.8;                
+            }
+        }
+        @-webkit-keyframes move{
+            0%{
+                left:  0px;
+                transform: scale(0.8);
+                opacity: 0.8;      
+            }
+            25%{
+                transform: scale(1); 
+                opacity: 1;
+            }
+            50%{ 
+                left: 50px;
+                transform: scale(1.5);   
+                opacity: 0.8;             
+            }
+            75%{
+                transform: scale(0.6);
+                opacity: 0.6;
+            }
+            100%{ 
+                left: 0px;               
+                transform: scale(0.8); 
+                opacity: 0.8;                
+            }
         }
         .first-page{
             width: 100%;
             height: 800px;
-            background-color: #687980;
-            text-align: center;
-        }
-        .first-page img{
-            width:100%;
-            height: 500px;
-            max-width: 1440px;
-            object-fit: cover;
-        }
+            background-color: #687980;            
+        }        
         .information-container{           
-            margin-top: 50px;
-            padding-top: 20px;
+            margin-top: 0px;            
             color:#fefecc;
             transition: 0.5s 1s;
             opacity: 0;
+            text-align: center;
         }
         .information h1{
             margin-right: 20px;
@@ -291,7 +411,7 @@
             .page{
                 overflow-x: hidden;
             }
-            .header{                
+            .header{                        
                 display: flex;
                 justify-content: space-between;
                 background-color: #02475e;
@@ -368,9 +488,14 @@
 </head>
 <body>
     
-    <div class="page">        
+    <div class="page">
         <input type="checkbox" name="" id="menu-control">
-    
+        <div class="mask_timer">
+            <div class="mask"></div>            
+            <div class="circle1"></div>
+            <div class="timer" id="timer">100</div>
+            <img src="img/視覺icon-1.jpg" alt="">
+        </div>
         <div class="header">
             <h1 class="logo">
                 <a href="#"><img src="https://image.flaticon.com/icons/png/512/1483/1483341.png">
@@ -385,8 +510,7 @@
                 <a href="#third_position" class="move">Contact</a>
             </nav>            
         </div>
-        <div class="first-page" id="first_position">
-            <img src="img/視覺icon-1.jpg" alt="">
+        <section class="first-page" id="first_position">
             <div class="information-container">
                 <div class="information">
                     <h1>Yen-Ju Pan</h1>
@@ -397,8 +521,8 @@
                     <p class="context">姓名:潘彥如</br>系別:視覺傳達設計學系</br>興趣:視覺設計、英語學習、運動健身
                     </br>技能:Photoshop、Javascript、Bootstrap、React</p>
                 </div>
-            </div>
-        </div>        
+            </div>            
+        </section>        
             <section class="second-page" id="second_position">
                 <div class="row">
                     <div class="col-md-12">
@@ -481,6 +605,24 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
     <script type="text/javascript">
 
+        let timer;
+        window.onload=function(){
+            timer=document.getElementById("timer");
+            window.setTimeout(countdown, 20);
+        }
+
+        function countdown(){
+            timer.innerHTML=timer.innerHTML-1;
+            if(timer.innerHTML>0){
+                window.setTimeout(countdown, 20);                
+            }else{
+                $(document).ready(function(){
+                $(".page").addClass("finishloading");
+                });
+                $("#timer").fadeOut();
+            }
+        }
+
         $("a.move").click(function(){
             event.preventDefault();
             let to =$(this).attr("href");
@@ -500,14 +642,13 @@
         $(function(){
             if($(window).width()<768){
                 $('nav a').on('click', function(){
-                    $('.menu-btn').click();
+                    console.log("111")
+                    /*$('.menu-btn').click();*/
                 });
             }
         });
 
-        $(window).on("load", function(){
-            $(".page").addClass("finishloading");
-        });
+
         
 
     </script>
