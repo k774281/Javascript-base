@@ -10,15 +10,37 @@
             padding: 0;
             font-family: 微軟正黑體;          
         }    
-        
-        .finishloading .circle{
-            opacity: 0;
-        }
         html ,body{
             width: 100%;
             height: 2400px;
             background-color: #364547;            
         }
+        .finishloading .circle{
+            opacity: 0;
+        }
+        .finishloading .mask{
+            opacity: 0;
+            top: 100vh;
+        }
+        .finishloading .information-container{            
+            opacity: 1;
+            padding-top: 0px;
+        }
+        .finishloading .header{
+            opacity: 1;
+        }
+        .finishloading .circle1{
+            opacity: 0;
+        }
+        .mask{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100vh;
+            background-color:#325288;
+            transition: 1s 0.3s;
+        }        
         .page{
             width: 100%;
             height: 2400px;
@@ -134,8 +156,7 @@
                 $(document).ready(function(){
                 $(".page").addClass("finishloading");
                 });
-                $("#timer").fadeOut();
-                document.location="https://k774281.github.io/Javascript-base/work/RWD%20ScroollPage.html";
+                $("#timer").fadeOut();                
             }
         };
     </script>

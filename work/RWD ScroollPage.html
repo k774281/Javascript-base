@@ -2,615 +2,684 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"></meta>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">    
     <title>RWD Homepage</title>
+    
+
     <style type="text/css">
-        *{            
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            font-family: 微軟正黑體;
-        }
-        #menu-control{
-            position: absolute;
-        }
-        .finishloading .mask{
-            opacity: 0;
-            top: 100vh;
-        }
-        .finishloading .information-container{            
-            opacity: 1;
-            padding-top: 0px;
-        }
-        .finishloading .header{
-            opacity: 1;
-        }
-        .finishloading .circle1{
-            opacity: 0;
-        }
-        .mask{
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            width: 100%;
-            height: 100vh;
-            background-color:#325288;
-            transition: 1s 0.3s;
-        }
-        .header{            
-            width: 100%;
-            height: 50px;
-            background-color: #02475e;
-            position: absolute;
-            top: 0;
-            left:0;
-            right:0;
-            z-index: 999;
-            opacity: 0;                         
-        }
-        .logo{
-            width: 60px;
-            height: 40px;
-            margin-left: 10px;            
-        }
-        .logo a{
-            display: block;
-            height: 40px;
-        }
-        .logo img{            
-            width: 100%;
-            height: 100%;
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: cover;
-            margin-top: 5px;
-        }
-        .menu-btn{
-            width: 35px;
-            height: 35px;
-            background-color: #02475e;
-            display: block;
-            position: absolute;
-            top: 5px;
-            right: 15px;
-            border-radius: 4px;
-            border: 2px solid #fefecc;            
-        }
-        span{
-            opacity: 0;
-        }
-        .menu-btn::before{
-            content: "";
-            position: absolute;
-            left:2px;
-            width: 28px;
-            height: 2px;
-            background-color: #fefecc;
-            margin: auto;
-            top: 0;
-            bottom: 0;
-            box-shadow: 0px 8px 0px #fefecc,
-                        0px -8px 0px #fefecc;
-        }
-        nav{
-            width: 80%;
-            height: calc( 100vh - 50px);            
-            position: absolute;
-            top: 50px;
-            left: -100%;
-            transition: 0.5s;
-            background-color: #02475e;
-            z-index: -1;
-        }
-        nav a{
-            position: relative;
-            top: 0px;
-            left: 0px;
-            display: block;
-            padding: 10px 20px;
-            text-decoration: none;
-            color: #fefecc;
-            border-bottom: 1px solid #fefecc;
-            transition: all 0.5s;
-        }
-        nav a:hover{
-            color:#687980;
-        }
-        #menu-control:checked ~ .header nav{
-            left:0;
-        }        
-        .page{
-            max-width: 1440px;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            left: 0px;
-            top: 0px;        
-        }
-        .mask_timer{
-            width:100%;
-            height: 600px;
-            position: relative;
-            left: 0px;
-            top: 0px;
-            margin: 0 auto;
-            background-color: #564a4a;            
-        }
-        .mask_timer img{ 
-            display: block;           
-            width:100%;
-            height: 600px;
-            max-width: 1440px;
-            object-fit: cover;                     
-        }
-        .timer{
-            position: absolute; 
-            top: calc( 50% + 30px );
-            left: calc( 50% - 10px );
-            transform: translateY(-50%);
-            color:#f8ede3;
-            font-size: 18px;
-        }
-        .circle1{
-            position: absolute;
-            top: 50%;
-            left: calc( 50% - 30px );
-            transform: translateY(-50%);
-            transition: 0.5s; 
-        }
-        .circle1:before, .circle1:after{
-            content: "";
-            display: block;
-            border-radius: 100%;
-            width: 16px;
-            height: 16px;
-            z-index: 100;
-            position: absolute;            
-            top: 50%;            
-            background-color: rgb(233, 227, 227);            
-            transition: 0.5s;
-            animation: move 2s infinite linear;
-        }
-        .circle1:before{
-            animation-delay: 0s;
-        }
-        .circle1:after{
-            animation-delay: -1s;
-        }
-        @keyframes move{
-            0%{
-                left:  0px;
-                transform: scale(0.8);
-                opacity: 0.8;      
-            }
-            25%{
-                transform: scale(1); 
-                opacity: 1;
-            }
-            50%{ 
-                left: 50px;
-                transform: scale(1.5);   
-                opacity: 0.8;             
-            }
-            75%{
-                transform: scale(0.6);
-                opacity: 0.6;
-            }
-            100%{ 
-                left: 0px;               
-                transform: scale(0.8); 
-                opacity: 0.8;                
-            }
-        }
-        @-webkit-keyframes move{
-            0%{
-                left:  0px;
-                transform: scale(0.8);
-                opacity: 0.8;      
-            }
-            25%{
-                transform: scale(1); 
-                opacity: 1;
-            }
-            50%{ 
-                left: 50px;
-                transform: scale(1.5);   
-                opacity: 0.8;             
-            }
-            75%{
-                transform: scale(0.6);
-                opacity: 0.6;
-            }
-            100%{ 
-                left: 0px;               
-                transform: scale(0.8); 
-                opacity: 0.8;                
-            }
-        }
-        .first-page{
-            width: 100%;
-            height: 800px;
-            background-color: #687980;            
-        }        
-        .information-container{           
-            margin-top: 0px;            
-            color:#fefecc;
-            transition: 0.5s 1s;
-            opacity: 0;
-            text-align: center;
-        }
-        .information h1{
-            margin-right: 20px;
-        }
-        .information p{
-            padding: 0 15px;
-        }
-        section {
-            text-align: center;
-            padding: 5vh 0;
-        }
-        .second-page{
-            width: 100%;
-            height: 1400px;
-            background-color: #f3bda1; 
-            position: relative;            
-        }
-        .second-page h1{
-            width:120px;
-            height: 50px;
-            background-color: #02475e;
-            text-align: center;
-            color:#fefecc;
-            position:absolute;
-            top: 30px;
-            line-height: 50px;
-        }
-        .row-works{
-            width: 100%;
-            position: absolute;
-            margin: 50px auto;            
-        }
-        .col-works {
-            width: 300px;
-            height: 300px;            
-            margin: 10px auto;
-        }
-        .col-works .pic1, .col-works .pic2, .col-works .pic3, .col-works .pic4 {
-            margin-bottom: 10px;
-            width: 300px;
-            height: 300px;
-            overflow: hidden;
-            position: relative;
-        }
-        .img{
-            width: 300px;
-            height: 300px;
-            object-fit: cover;
-        }
-        .col-works .pic1 img, .col-works .pic2 img, .col-works .pic3 img, .col-works .pic4 img {    
-            transform: scale(1);           
-            padding: 0;
-        }
-        .col-works h4 {
-            display: none;
-            margin: auto;
-        }
-        .col-works:hover img {    
-            transform: scale(1.1);
-            transition: 1s;
-        }
-        .col-works:hover h4 {
-            display: block;
-            position: absolute;
-            background: rgba(0, 0, 0, 0.6);
-            color: #FFF;
-            width: 300px;
-            height: 300px;
-            line-height: 250px;
-            text-align: center;
-            top: 0;
-            z-index: 10;
-            top: 50%;
-            left: 50%;
-            transform: translateX(-50%) translateY(-50%);
-            letter-spacing: 1px;
-        }
-        .third-page{
-            width: 100%;
-            height: 800px;
-            background-color: #687980;
-            position: relative;
-        }
-        .third-page h1{
-            width:120px;
-            height: 50px;
-            background-color: #02475e;
-            text-align: center;
-            color:#fefecc;
-            position:absolute;
-            top: 30px;
-            line-height: 50px;
-        }
-        .wrapper{
-            width: 80%;
-            height: 400px;
-            background-color: white;
-            position: absolute;
-            top: 0px;            
-            left: 50%;
-            transform: translate(-50%);
-        }
-        .container{ 
-            display: flex;
-            flex-direction: column;           
-            height: 600px;            
-            position:absolute;
-            top: 100px;
-            left: 50%;
-            transform: translate(-50%);
-        }               
-        h3{
-            font-size: 24px;
-            color:rgb(58, 56, 56);
-        }
-         
-        .third-page p{
-            font-size: 14px;
-            color:rgb(170, 169, 166);
-            padding: 0px 50px;            
-        }        
-        input{
-            padding: 5px;
-            width: 200px;
-        }
-        textarea{        
-            padding: 5px;
-            width: 200px;
-        }
-        .btn {
-            display: block;
-            width: 80px;
-            height: 40px;
-            background: #f3bda1;
-            border-radius: 8px;
-            margin: 10px auto;
-            border-bottom: 6px solid #687980;
-            transition: all 0.4s;            
-            color:#687980;
-            font-weight: bold;
-        }
-        .btn:hover {
-            color: #f6e6e4;
-        }
-        .btn:hover {
-            background: #ca8a8b;
-            border-bottom: 2px solid #564a4a;
-            transform: translateY(-5px);
-        }
-        .btn:active {
-            background: #564a4a;
-            border-bottom: 0;
-        }
-        .text{
-            position: absolute;
-            top: 400px;
-            width:350px;            
-            text-align: start;
-            color: #fefecc;
-            font-weight: bold;
-        }
-        .icon{
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        @media screen and (min-width: 768px){
-            .menu-btn{ display: none; }
-            .page{
-                overflow-x: hidden;
-            }
-            .header{                        
-                display: flex;
-                justify-content: space-between;
-                background-color: #02475e;
-                align-items: center;
-                position: fixed;
-                transition: all 0.5s;
-            }
-            .headerMove{
-                transition: all 0.5s;
-                background-color: white;
-                z-index: 999; 
-            }
-            nav{               
-                position: relative;
-                left: 0;
-                display: flex;
-                width: auto;
-                height: auto;
-                top: 0;
-                background-color: transparent;                          
-            }
-            nav a{
-                border-bottom: 0px;
-                color:#f5cebe;
-            }
-            .logo img{
-                margin-top: 0px;
-            }
-            .col-works .pic1 img, .col-works .pic2 img, .col-works .pic3 img, .col-works .pic4 img {    
-                width: 180px;
-                height: 180px;
-            }
-            .img{
-                width: 180px;
-                height: 180px;
-                object-fit: cover;
-            }
-            .col-works .pic1, .col-works .pic2, .col-works .pic3, .col-works .pic4 {                
-                width: 180px;
-                height: 180px;
-            }
-            .col-works:hover h4 {
-                font-size: 14px;
-            }
-            .second-page{
-                height: 400px;
-            }
-            .third-page{
-                height: 600px;
-            }
-            .third-page h1{
-                width: 150px;
-            }
-            .container{
-                display: flex;
-                flex-direction: row;
-            } 
-            .wrapper{
-                width: 300px;
-                position: absolute;
-                left: 30%;
-            }
-            .text{
-                position: absolute;
-                top: 0px;
-                margin-left: 20px;
-            }
-            .icon{
-                height: 350px;
-            }
-        }
+*{
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: 微軟正黑體;  
+}
+html, body {
+  width: 100%;
+  height: 100%;
+}
+#menu-control{
+  opacity:0;
+}
+ .finishloading .mask{
+   opacity: 0;
+   top: 100vh;
+}
+.finishloading .circle{
+   opacity: 0;
+}
+.finishloading .box3{
+  opacity: 1;
+}
+.finishloading .page-header{
+  opacity: 1;
+}
+.page{
+  width: 100%;
+  height: 100%;
+  background-color: #94d0cc;  
+}
+.timer{
+  position:absolute;
+  top: 450px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color:#f8ede3;
+  font-size: 18px;
+}
+.mask{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color:#325288;
+  transition: 1s 0.3s;
+}
+.circle{
+  position: absolute;
+  left: calc(50% - 30px);
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.5s; 
+}
+.circle:before, .circle:after{
+  content: "";
+  display: block;
+  border-radius: 100%;
+  width: 16px;
+  height: 16px;
+  z-index: 100;
+  position: absolute;            
+  top: 50%;            
+  background-color: rgb(233, 227, 227);            
+  transition: 0.5s;
+  animation: move 2s infinite linear;
+}
+.circle:before{
+  animation-delay: 0s;
+}
+.circle:after{
+  animation-delay: -1s;
+}
+@keyframes move{
+  0%{
+    left:  0px;
+    transform: scale(0.8);
+    opacity: 0.8;      
+    }
+  25%{
+     transform: scale(1); 
+     opacity: 1;
+     }
+  50%{ 
+     left: 50px;
+     transform: scale(1.5);   
+     opacity: 0.8;             
+    }
+  75%{
+      transform: scale(0.6);
+      opacity: 0.6;
+     }
+  100%{ 
+      left: 0px;               
+      transform: scale(0.8); 
+      opacity: 0.8;                
+      }
+     }
+ @-webkit-keyframes move{
+   0%{
+     left:  0px;
+     transform: scale(0.8);
+     opacity: 0.8;      
+     }
+   25%{
+      transform: scale(1); 
+      opacity: 1;
+      }
+   50%{ 
+      left: 50px;
+      transform: scale(1.5);   
+      opacity: 0.8;             
+     }
+   75%{
+      transform: scale(0.6);
+      opacity: 0.6;
+      }
+   100%{ 
+      left: 0px;               
+      transform: scale(0.8); 
+      opacity: 0.8;                
+      }
+     }
+.box3 {
+  width: 100%;
+  height: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  opacity: 0;
+  transition: 1s;
+}
+.touch {
+ font-size: 72px;
+ text-decoration: none;
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%,-50%);
+ color: #16213e;
+}
+.touch:hover:before {
+  width: 100%;
+  transition: all 0.4s;
+}
+.touch:before {
+  content: "";
+  display: block;
+  width: 0%;
+  height: 2px;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  background: #16213e;
+}
+.touch:hover:after {
+  width: 100%;
+  transition: all 0.4s;
+}
+.touch:after {
+  content: "";
+  display: block;
+  width: 0%;
+  height: 2px;
+  position: absolute;
+  right: 0%;
+  bottom: 0%;
+  background: #16213e;
+}
+.page-header{
+  width: 100%;
+  max-width: 1440px;
+  height: 50px;
+  background-color: #02475e;
+  position: absolute;
+  top: 0;
+  left:0;
+  right:0;
+  z-index: 999; 
+  opacity: 0;
+  transition: 1s;
+}
+.logo{
+  width: 60px;
+  height: 40px;
+  margin-left: 10px;
+}
+.logo a{
+  display: block;
+  height: 40px;
+}
+.logo img{
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  margin-top: 5px;
+}
+.menu-btn{
+   width: 35px;
+   height: 35px;
+   background-color: #02475e;
+   display: block;
+   position: absolute;
+   top: 5px;
+   right: 15px;
+   border-radius: 4px;
+   border: 2px solid #fefecc;            
+}
+span{
+  opacity: 0;
+}
+.menu-btn::before{
+  content: "";
+  position: absolute;
+  left:2px;
+  width: 28px;
+  height: 2px;
+  background-color: #fefecc;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  box-shadow: 0px 8px 0px #fefecc,
+              0px -8px 0px #fefecc;
+}
+nav{
+  width: 80%;
+  height: calc( 100vh - 50px);
+  position: absolute;
+  top: 50px;
+  left:-100%;
+  transition: 0.5s;
+  background-color: #02475e;
+  z-index: -1;
+}
+nav a{
+  position: relative;
+  top: 0px;
+  left: 0px;
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #fefecc;
+  border-bottom: 1px solid #fefecc;
+  transition: all 0.5s;
+}
+nav a:hover{
+  color:#687980;
+}
+#menu-control:checked ~ .page-header nav{
+  left:0;
+}
+.first-page{
+  width: 100%;
+  height: 800px;
+  background-color: #687980;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fefecc;  
+}
+.first-page img{
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+.row-information-container{
+  margin-top: 50px;
+}
+h1{
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+  text-align: center;
+}
+.profile{
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+  text-align: center;
+}
+.second-page{
+  width: 100%;
+  height: 1400px;
+  background-color: #f3bda1; 
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.second-page h1{
+  width:120px;
+  height: 50px;
+  background-color: #02475e;
+  text-align: center;
+  color:#fefecc;
+  position:absolute;
+  top: 30px;
+  line-height: 50px;
+}
+.row-works{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 100px auto;
+}
+.col-works{
+  margin-top: 10px;
+  width: 300px;  
+}
+.second-page .pic1, .second-page .pic2, .second-page .pic3, .second-page .pic4 {  
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+}
+.col-works .pic1 img, .col-works .pic2 img, .col-works .pic3 img, .col-works .pic4 img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  transform: scale(1);           
+  padding: 0;  
+}
+.col-works h4 {
+  display: none;
+  margin: auto;
+}
+.col-works:hover img {    
+  transform: scale(1.1);
+  transition: 1s;
+}
+.col-works:hover h4 {
+  display: block;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.6);
+  color: #FFF;
+  width: 300px;
+  height: 300px;
+  line-height: 250px;
+  text-align: center;
+  top: 0;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  letter-spacing: 1px;
+}
+.third-page{
+  width: 100%;
+  height: 800px;
+  background-color: #687980;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.row-word{
+  width: 100%;  
+}
+.row-contact{
+  margin: 100px auto;
+}
+.third-page h1{
+  width: 120px;
+  height: 50px;
+  background-color: #02475e;  
+  color: #fefecc;
+  position: absolute;  
+  top: 30px;
+  line-height: 50px;
+}
+.wrapper{  
+  width: 400px;
+  height: 400px;
+  background-color: white;  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;  
+}
+.third-page h3{
+  font-size: 24px;
+  color:rgb(58, 56, 56);
+}
+.third-page p{
+  font-size: 14px;
+  color:rgb(170, 169, 166);
+}
+.third-page input{
+  width: 250px;
+  height: 30px;
+  border: 3px solid rgb(58, 56, 56);
+  border-radius: 5px;
+}
+textarea{
+ padding: 5px;
+ width: 250px;
+ border: 3px solid rgb(58, 56, 56);
+ border-radius: 5px;
+}
+.icon{
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+.btn{
+  display: block;
+  width: 80px;
+  height: 30px;
+  background: #f3bda1;
+  border-radius: 5px;
+  margin: 10px auto;
+  border-bottom: 2px solid #687980;
+  transition: all 0.4s;  
+  color:#687980;
+  font-weight: bold;
+}
+.btn:hover{
+  color: #f6e6e4;
+  background: #ca8a8b;
+  border-bottom: 2px solid #564a4a;
+  transform: translateY(-3px);
+  }
+.btn:active {
+  background: #564a4a;
+  border-bottom: 0;        
+}
+.third-page .text{
+    margin-top: 20px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+@media screen and (min-width: 768px) and (max-width: 1024px){  
+  .menu-btn {
+    display: none;
+  }
+  .page-header{
+    display: flex;
+    justify-content: space-between;    
+    align-items: center;
+    position: fixed;
+    transition: all 0.5s;
+  }
+  .headerMove{
+    transition: all 0.5s;
+    background-color: white;
+    z-index: 999; 
+ }
+  nav{               
+    position: relative;
+    left: 0;
+    display: flex;
+    width: auto;
+    height: auto;
+    top: 0;
+    background-color: transparent;
+  }
+ nav a{
+   border-bottom: 0px;
+   color:#f5cebe;
+  }
+  .logo img{
+    margin-top: 0px;
+  }
+  .first-page .row-information-container{
+    display: flex;
+  }
+   .row-information-container h2{
+    margin-left: 20px;
+  }
+  .row-information-container .context{
+    margin-top: 10px;
+    margin-left: 20px;
+  }
+  .second-page{
+    height: 800px;
+  }
+  .second-page .row-works{
+    width: 700px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .second-page .col-works{
+    margin-left: 10px;
+  }
+}
+@media screen and (min-width:1024px) {
+  .menu-btn {
+    display: none;
+  }
+  .page-header{                
+    display: flex;
+    justify-content: space-between;    
+    align-items: center;
+    position: fixed;
+    transition: all 0.5s;
+  }
+  .headerMove{
+    transition: all 0.5s;
+    background-color: white;
+    z-index: 999; 
+ }
+  nav{               
+    position: relative;
+    left: 0;
+    display: flex;
+    width: auto;
+    height: auto;
+    top: 0;
+    background-color: transparent;
+  }
+ nav a{
+   border-bottom: 0px;
+   color:#f5cebe;
+  }  
+  .logo img{
+    margin-top: 0px;
+  }
+  .first-page .row-information-container{
+    display: flex;
+  }
+   .row-information-container h2{
+    margin-left: 20px;
+  }
+  .row-information-container .context{
+    margin-top: 10px;
+    margin-left: 20px;
+  }
+  .second-page{
+    height: 800px;
+  }
+  .second-page .row-works{    
+    display: flex;
+    margin: 100px auto;
+  }
+  .third-page .row-contact{
+    display: flex;    
+  }
+  .third-page{
+    height: 600px;
+  }
+  .third-page .text{
+    margin-left: 20px;
+    font-size: 36px;
+  }
+  .third-page .text p{
+    font-size: 20px;
+  }
+}
     </style>
 
 </head>
 <body>
-    
-    <div class="page">
-        <input type="checkbox" name="" id="menu-control">
-        <div class="mask_timer">
-            <div class="mask"></div>            
-            <div class="circle1"></div>
-            <div class="timer" id="timer">100</div>
-            <img src="img/視覺icon-1.jpg" alt="">
-        </div>
-        <div class="header">
-            <h1 class="logo">
-                <a href="#"><img src="https://image.flaticon.com/icons/png/512/1483/1483341.png">
-                </a>
-            </h1>
-            <label for="menu-control" class="menu-btn">
-                <span>選單</span>
-            </label>
-            <nav>
-                <a href="#first_position" class="move">About Me</a>
-                <a href="#second_position" class="move">Work</a>
-                <a href="#third_position" class="move">Contact</a>
-            </nav>            
-        </div>
-        <section class="first-page" id="first_position">
-            <div class="information-container">
-                <div class="information">
-                    <h1>Yen-Ju Pan</h1>
-                    <p class="profile">profile</p>
-                </div>
-                <div class="information">
-                    <h2>基本資料</h2>                    
-                    <p class="context">姓名:潘彥如</br>系別:視覺傳達設計學系</br>興趣:視覺設計、英語學習、運動健身
-                    </br>技能:Photoshop、Javascript、Bootstrap、React</p>
-                </div>
-            </div>            
-        </section>        
-            <section class="second-page" id="second_position">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1>WORK</h1>
-                    </div>
-                </div>
-                <div class="row">
-                <div class="row row-works">
-                    <div class="col-sm-12 col-md-3">
-                        <div class="col-works">
-                            <div class="pic1"><img src="img/視覺icon-3.jpg" class="img" alt="">
-                                <h4>視覺 icon & 標準字</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-3">
-                        <div class="col-works">
-                            <div class="pic2"><img src="img/總合.jpg" class="img" alt="">
-                                <h4>周邊排版</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-3">
-                        <div class="col-works">
-                            <div class="pic3"><img src="img/礦坑之歌-1.jpg" class="img" alt="">
-                                <h4>繪本內頁手繪</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-3">
-                        <div class="col-works">
-                            <div class="pic4"><img src="img/礦坑之歌場景-1.jpg" class="img" alt="">
-                                <h4>繪本草稿素描定稿</h4>
-                            </div>
-                        </div>
-                        </div>            
-                    </div>
-                </div>
-            </section>    
-        <section class="third-page" id="third_position">
-            <form>
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1>Contect</h1>
-                    </div>
-                                     
-                    <div class="container">                        
-                        <div class="col-sm-6">
-                            <div class="wrapper">
-                                <h3>Name</h3>
-                                <input type="name" required />         
-                                <h3>Email address</h3>                                 
-                                <input type="email" required />
-                                <p>We'll never share your email with anyone else.</p>
-                                <h3>Contact</h3>                   
-                                <textarea></textarea>
-                                <button type="submit" class="btn" >Submit</button>
-                            </div>                             
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="text">
-                            <h2>Contact</h2><br/>
-                            <p>If you require any further information, <br/>
-                                feel free to contact me.</p><br/>
-                            <p>k774281@gmail.com<br>
-                                    ADDRESS: Tiwan, Taipei, Shulin Dist.<br>
-                                    PHONE: 0975282065
-                            </p>
-                            </div>
-                        </div>
-                    </div>                    
-                </div>
-            </form>            
-        </section>
-        <footer><img class="icon" src="img/視覺icon-2.jpg"/></footer>
-    </div>
-    
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+    <div class="page loading ">
+        <div class="mask"></div>
+        <div class="circle"></div>
+        <div class="timer" id="timer">100</div>
+       <div class="box3">
+       <a href="#first_position" class="touch">Touch</a>
+     </div>
+     <input type="checkbox" name="" id="menu-control">
+     <header class="page-header loading start">  
+       <h1 class="logo">
+         <a href="#"><img src="https://image.flaticon.com/icons/png/512/1483/1483341.png">
+         </a>
+       </h1>
+       <label for="menu-control" class="menu-btn">
+       <span>選單</span>
+       </label>
+       <nav>
+         <a href="#first_position" class="move_to">About Me</a>
+         <a href="#second_position" class="move_to">Work</a>
+         <a href="#third_position" class="move_to">Contact</a>
+       </nav>
+     </header> 
+     </div>
+     
+     <section class="first-page" id="first_position">
+       <img src="https://drive.google.com/uc?export=view&id=1ZW2l6E3sjLYnY3pVLF3nX7EzMiKvpdDg" alt="">
+       <div class="row-information-container">
+         <div class="col-md-6">
+           <h1>Yen-Ju Pan</h1>
+           <p class="profile">profile</p>
+         </div>
+         <div class="col-md-6">
+           <h2>基本資料</h2>
+           <p class="context">姓名:潘彥如</br>系別:視覺傳達設計學系</br>興趣:視覺設計、英語學習、運動健身
+           </br>技能:Photoshop、Javascript、Bootstrap、React</p>
+         </div>
+       </div>            
+     </section>
+     <section class="second-page" id="second_position">
+        <div class="row">     
+             <h1>WORK</h1>      
+         </div>
+         <div class="row row-works">
+            <div class="col-sm-12 col-md-3">
+               <div class="col-works">
+                <div class="pic1"><img src="https://drive.google.com/uc?export=view&id=1wp5F61ycHfFBU28QbAbJ0T98aQ-pWr3P" class="img" alt="">
+                   <h4>視覺 icon & 標準字</h4>
+                  </div>
+                </div>          
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <div class="col-works">
+                 <div class="pic2"><img src="https://drive.google.com/uc?export=view&id=1xz7_vWlrFRhmWHsIyjqKWC5Q6JePxd7G" class="img" alt="">
+                 <h4>周邊排版</h4>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <div class="col-works">
+              <div class="pic3"><img src="https://drive.google.com/uc?export=view&id=1U3kC-OHz68oaR_260YTq2ZjodQNPCAge" class="img" alt="">
+                  <h4>繪本內頁手繪</h4>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <div class="col-works">
+                  <div class="pic4"><img src="https://drive.google.com/uc?export=view&id=1I6wXuOKZ_JlDQkg263kW8jSXIrvUfOpm" class="img" alt="">
+                     <h4>繪本草稿素描定稿</h4>
+                    </div>
+                  </div>
+             </div>
+         </div>
+     </section>
+     <section class="third-page" id="third_position">
+       <div class="row row-word">
+         <h1>Contact</h1>      
+       </div>
+           <form>
+             <div class="row row-contact">
+              <div class="col-sm-6">
+                 <div class="wrapper">
+                   <h3>Name</h3>
+                   <input type="name" required />
+                   <h3>Email address</h3> 
+                   <input type="email" required />
+                   <p>We'll never share your email with anyone else.</p>
+                   <h3>Contact</h3>                   
+                   <textarea></textarea>
+                   <button type="submit" class="btn" >Submit</button>
+                 </div>                             
+              </div>
+              <div class="col-sm-6">
+                 <div class="text">
+                   <h2>Contact</h2><br/>
+                   <p>If you require any further information, <br/>feel free to contact me.</p><br/>                                     
+                   <p>k774281@gmail.com<br>                            ADDRESS: Tiwan, Taipei, Shulin Dist.<br>
+                      PHONE: 0975282065</p>
+                  </div>
+                </div>                             
+            </div>
+         </form>            
+     </section>
+     <footer>
+       <img class="icon" src="https://drive.google.com/uc?export=view&id=1jbg3VxJGlCTLYgvWOKAnOIPMmvaVaYCl"/>
+     </footer>
+     
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>    
     <script type="text/javascript">
 
-        let timer;
+let timer;
         window.onload=function(){
             timer=document.getElementById("timer");
             window.setTimeout(countdown, 20);
         }
-
         function countdown(){
             timer.innerHTML=timer.innerHTML-1;
             if(timer.innerHTML>0){
@@ -623,35 +692,38 @@
             }
         }
 
-        $("a.move").click(function(){
-            event.preventDefault();
-            let to =$(this).attr("href");
-            $("body, html").animate({
-                scrollTop: $(to).position().top
+$("a.move_to").click(function(e){
+   event.preventDefault();
+   let to =$(this).attr("href");
+   $("html, body").animate({
+     scrollTop: $(to).position().top
             },600);
         })
 
+$("a.touch").click(function(e){
+  event.preventDefault();
+  let go = $(this).attr("href");
+  $("html, body").animate({
+    scrollTop: $(go).position().top
+  },600);
+})
+$(function(){
+  if($(window).height()>80){
+    $('nav a').on('click',function(){
+      $('.menu-btn').click();
+    })
+  }
+})
 
-        $(window).scroll(function(e){
-            if($(window).scrollTop()>=80)
-                $(".header").addClass("headerMove");
+$(window).scroll(function(e){
+  if($(window).scrollTop()>=80)               
+    $(".page-header").addClass("headerMove");
             else
-                $(".header").removeClass("headerMove");                
-        });
-
-        $(function(){
-            if($(window).width()<768){
-                $('nav a').on('click', function(){
-                    console.log("111")
-                    /*$('.menu-btn').click();*/
-                });
-            }
-        });
-
-
+    $(".page-header").removeClass("headerMove"); 
+});
         
-
     </script>
+
 
 </body>
 </html>
